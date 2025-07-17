@@ -27,6 +27,8 @@ DATE=$(date +"%Y-%m-%d %I:%M %p %Z")
 
 # Check if Nginx is installed
 if ! command -v nginx >/dev/null 2>&1; then
+    # Debugging: Uncomment the next line to see why the check failed
+    # echo "Debug: 'nginx' command not found in PATH" >&2
     cat > "$OUTPUT_HTML" <<EOF
 <!DOCTYPE html>
 <html lang="en">
