@@ -22,13 +22,10 @@ OUTPUT_HTML="nginx_cis_audit_report.html"
 NGINX_CONF="/etc/nginx/nginx.conf"
 NGINX_DIR="/etc/nginx"
 NGINX_LOGS="/var/log/nginx"
-NGINX_USER=$(ps -C nginx -o user --no-headers 2>/dev/null || echo "nginx")
 DATE=$(date +"%Y-%m-%d %I:%M %p %Z")
 
 # Check if Nginx is installed
-if ! command -v nginx >/dev/null 2>&1; then
-    # Debugging: Uncomment the next line to see why the check failed
-    # echo "Debug: 'nginx' command not found in PATH" >&2
+if ! command -v nginx >/dev/null 2>&1 || [ ! -d "$NGINX_DIR" ]; then
     cat > "$OUTPUT_HTML" <<EOF
 <!DOCTYPE html>
 <html lang="en">
@@ -273,6 +270,7 @@ add_finding "1.4.3" "$desc" "$risk" "$fix_type" "$status" "$remediation"
 desc="Ensure Nginx runs as a non-root user"
 risk="High"
 fix_type="Involved"
+NGINX_USER=$(ps -C nginx -o user --no-headers 2>/dev/null || echo "nginx")
 if [ "$NGINX_USER" != "root" ] 2>/dev/null; then
     status="pass"
     remediation="N/A"
