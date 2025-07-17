@@ -23,7 +23,7 @@ NGINX_CONF="/etc/nginx/nginx.conf"
 NGINX_DIR="/etc/nginx"
 NGINX_LOGS="/var/log/nginx"
 NGINX_USER=$(ps -C nginx -o user --no-headers 2>/dev/null || echo "nginx")
-DATE=$(date -d "2025-07-17 03:40 PM +0545" +"%Y-%m-%d %I:%M %p %Z")
+DATE=$(date +"%Y-%m-%d %I:%M %p %Z")
 
 # Check if Nginx is installed
 if ! command -v nginx >/dev/null 2>&1; then
