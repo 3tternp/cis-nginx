@@ -3,7 +3,6 @@
 # Banner
 echo "========================================"
 echo "CIS Benchmark for Nginx Configuration Audit"
-echo "Version 1.0             Developed by Astra"
 echo "========================================"
 
 # Variables
@@ -12,7 +11,7 @@ NGINX_CONF="/etc/nginx/nginx.conf"
 NGINX_DIR="/etc/nginx"
 NGINX_LOGS="/var/log/nginx"
 NGINX_USER=$(ps -C nginx -o user --no-headers 2>/dev/null || echo "nginx")
-DATE=$(date -d "2025-07-17 03:15 PM +0545" +"%Y-%m-%d %I:%M %p %Z")
+DATE=$(date +"%Y-%m-%d %I:%M %p %Z")
 
 # Start HTML file
 cat > "$OUTPUT_HTML" <<EOF
@@ -62,6 +61,19 @@ add_finding() {
         </tr>
 EOF
 }
+
+# 1.0.1: Ensure Nginx version meets minimum requirement (1.14.0)
+desc="Ensure Nginx version is 1.14.0 or later"
+risk="High"
+fix_type="Involved"
+if nginx -v 2>&1 | grep -q "nginx version: nginx/1\.14\.[0-9]\+" > /dev/null 2>&1; then
+    status="pass"
+    remediation="N/A"
+else
+    status="fail"
+    remediation="Upgrade Nginx to version 1.14.0 or later using your package manager (e.g., 'sudo apt update && sudo apt install nginx' on Debian/Ubuntu)."
+fi
+add_finding "1.0.1" "$desc" "$risk" "$fix_type" "$status" "$remediation"
 
 # 1.1.1: Ensure server tokens are disabled
 desc="Ensure server tokens are disabled to prevent version disclosure"
@@ -210,7 +222,7 @@ add_finding "1.4.2" "$desc" "$risk" "$fix_type" "$status" "$remediation"
 desc="Ensure log rotation is configured for Nginx logs"
 risk="Low"
 fix_type="Involved"
-if [ -f "/etc/logrotate.d/nginx" ]; then
+if [ -f "/etc/logrotate.d/nginx" ] 2>/dev/null; then
     status="pass"
     remediation="N/A"
 else
