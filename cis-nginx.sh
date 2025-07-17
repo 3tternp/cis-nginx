@@ -1,5 +1,17 @@
 #!/bin/bash
 
+# Disclaimer and User Consent
+echo "========================================"
+echo "DISCLAIMER: This script performs a CIS Benchmark audit of Nginx configuration."
+echo "It may access sensitive system files and generate a report (nginx_cis_audit_report.html)."
+echo "Please ensure you have the necessary permissions and consent to proceed."
+echo "========================================"
+read -p "Do you consent to run this script? (yes/no): " consent
+if [ "$consent" != "yes" ]; then
+    echo "Script execution aborted due to lack of consent."
+    exit 1
+fi
+
 # Banner
 echo "========================================"
 echo "CIS Benchmark for Nginx Configuration Audit"
@@ -11,7 +23,31 @@ NGINX_CONF="/etc/nginx/nginx.conf"
 NGINX_DIR="/etc/nginx"
 NGINX_LOGS="/var/log/nginx"
 NGINX_USER=$(ps -C nginx -o user --no-headers 2>/dev/null || echo "nginx")
-DATE=$(date +"%Y-%m-%d %I:%M %p %Z")
+DATE=$(date -d "2025-07-17 03:40 PM +0545" +"%Y-%m-%d %I:%M %p %Z")
+
+# Check if Nginx is installed
+if ! command -v nginx >/dev/null 2>&1; then
+    cat > "$OUTPUT_HTML" <<EOF
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CIS Benchmark Nginx Audit Report - $DATE</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #ff6347; }
+    </style>
+</head>
+<body>
+    <h1>CIS Benchmark Nginx Audit Report</h1>
+    <p>Generated on: $DATE</p>
+    <p><strong>Warning:</strong> Nginx is not installed on this system. No configuration audit was performed.</p>
+</body>
+</html>
+EOF
+    echo "Audit completed. Report generated: $OUTPUT_HTML"
+    exit 0
+fi
 
 # Start HTML file
 cat > "$OUTPUT_HTML" <<EOF
