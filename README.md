@@ -15,9 +15,6 @@ This is a Bash-based auditing tool that checks your NGINX server against the CIS
 
 📦 Lightweight and portable
 
-📂 Output Example
-
-HTML report: nginx_cis_audit_report.html
 
 🛠️ Prerequisites
 ```
