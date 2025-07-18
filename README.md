@@ -4,8 +4,10 @@
 
 
 # Usage 
-<img width="825" height="116" alt="image" src="https://github.com/user-attachments/assets/ad3fa41e-7a9a-4fef-aeae-8f9b9010645b" />
+<img width="823" height="191" alt="image" src="https://github.com/user-attachments/assets/769a3bdf-67f8-401c-8cf4-515dfcfcb1ba" />
+
 
 # output 
-<img width="1887" height="592" alt="image" src="https://github.com/user-attachments/assets/12e82cb1-6f66-4637-88c3-e504b1874553" />
+<img width="1357" height="512" alt="image" src="https://github.com/user-attachments/assets/e3a84342-4e28-40cd-bfdf-81eb7a232dcc" />
+
 
