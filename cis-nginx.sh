@@ -129,5 +129,5 @@ for id in "${!checks[@]}"; do
 done
 
 # === Finalize HTML ===
-echo "    </table>\n</body>\n</html>" >> "$OUTPUT_HTML"
+echo "    </table></body></html>" >> "$OUTPUT_HTML"
 echo "Audit complete. Report saved to $OUTPUT_HTML"
