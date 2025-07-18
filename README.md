@@ -2,6 +2,7 @@
 This is a Bash-based auditing tool that checks your NGINX server against the CIS Benchmark best practices. It performs configuration validations and generates a clean, user-friendly HTML report.
 
 🚀 Features
+
 ✅ Checks for over 30+ NGINX CIS controls
 
 📜 Parses all .conf files under /etc/nginx
@@ -15,6 +16,7 @@ This is a Bash-based auditing tool that checks your NGINX server against the CIS
 📦 Lightweight and portable
 
 📂 Output Example
+
 HTML report: nginx_cis_audit_report.html
 
 Each finding includes:
@@ -39,18 +41,16 @@ Root or sudo privileges
 NGINX installed (1.14+ recommended)
 
 📦 Installation
-bash
-Copy
-Edit
+```
 git clone https://github.com/your-username/nginx-cis-audit.git
 cd nginx-cis-audit
 chmod +x cis-nginx.sh
+```
 🚦 Usage
-bash
-Copy
-Edit
+```
 sudo ./cis-nginx.sh
 🔒 You'll be asked for consent before the script runs.
+```
 
 🧪 What It Checks
 Examples include:
