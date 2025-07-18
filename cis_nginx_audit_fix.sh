@@ -11,6 +11,11 @@ if [ "$consent" != "yes" ]; then
     exit 1
 fi
 
+# Banner
+echo "========================================"
+echo "CIS Benchmark for Nginx Configuration Audit"
+echo "========================================"
+
 # === Variables ===
 OUTPUT_HTML="nginx_cis_audit_report.html"
 NGINX_DIR="/etc/nginx"
