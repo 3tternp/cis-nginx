@@ -1,8 +1,73 @@
 # cis-nginx
+This is a Bash-based auditing tool that checks your NGINX server against the CIS Benchmark best practices. It performs configuration validations and generates a clean, user-friendly HTML report.
 
+🚀 Features
+✅ Checks for over 30+ NGINX CIS controls
 
+📜 Parses all .conf files under /etc/nginx
 
+🧠 False positive-resistant directive validation
 
+📈 HTML report generation
+
+🔐 Verifies SSL/TLS config, logging, buffer limits, and hardening
+
+📦 Lightweight and portable
+
+📂 Output Example
+HTML report: nginx_cis_audit_report.html
+
+Each finding includes:
+
+CIS ID
+
+Description
+
+Risk level
+
+Fix type
+
+Status (Pass/Fail)
+
+Remediation guidance
+
+🛠️ Prerequisites
+Bash shell
+
+Root or sudo privileges
+
+NGINX installed (1.14+ recommended)
+
+📦 Installation
+bash
+Copy
+Edit
+git clone https://github.com/your-username/nginx-cis-audit.git
+cd nginx-cis-audit
+chmod +x cis-nginx.sh
+🚦 Usage
+bash
+Copy
+Edit
+sudo ./cis-nginx.sh
+🔒 You'll be asked for consent before the script runs.
+
+🧪 What It Checks
+Examples include:
+
+server_tokens off
+
+ssl_protocols TLSv1.2 TLSv1.3
+
+client_max_body_size
+
+gzip on
+
+limit_conn_zone
+
+proxy_buffering
+
+and many more...
 # Usage 
 <img width="823" height="191" alt="image" src="https://github.com/user-attachments/assets/769a3bdf-67f8-401c-8cf4-515dfcfcb1ba" />
 
