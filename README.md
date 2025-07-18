@@ -21,25 +21,16 @@ HTML report: nginx_cis_audit_report.html
 
 Each finding includes:
 
-CIS ID
-
-Description
-
-Risk level
-
-Fix type
-
-Status (Pass/Fail)
-
-Remediation guidance
+CIS ID | Description | Risk level | Fix type | Status (Pass/Fail) | Remediation guidance
 
 🛠️ Prerequisites
+```
 Bash shell
 
 Root or sudo privileges
 
 NGINX installed (1.14+ recommended)
-
+```
 📦 Installation
 ```
 git clone https://github.com/your-username/nginx-cis-audit.git
